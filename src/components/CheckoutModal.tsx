@@ -198,9 +198,9 @@ export default function CheckoutModal({ isOpen, onClose }: Props): React.ReactEl
               className="mt-1"
             />
             <span>
-              I am authorized to purchase for this business and accept the{' '}
-              <a href="/tos" target="_blank" rel="noopener noreferrer" className="text-brand-teal underline">Terms of Service</a>.
-              {' '}See our <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-teal underline">Privacy Policy</a> for how we handle personal data.
+              I accept the{' '}
+              <a href="/tos" target="_blank" rel="noopener noreferrer" className="text-brand-teal underline">Terms of Service</a>
+              {' '}and <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-teal underline">Privacy Policy</a>.
             </span>
           </label>
 

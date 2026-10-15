@@ -86,6 +86,7 @@ const config: Config = {
   ],
 
   themeConfig: {
+    image: "logo/apple-touch-icon.png",
     colorMode: {
       defaultMode: "light",
       disableSwitch: true,
@@ -147,6 +148,9 @@ const config: Config = {
     },
 
     metadata: [
+      { name: "twitter:card", content: "summary" },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Yopass" },
       { name: "theme-color", content: "#fafbfc" },
       { name: "color-scheme", content: "light" },
     ],

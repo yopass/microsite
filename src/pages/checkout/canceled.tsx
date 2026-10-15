@@ -24,9 +24,8 @@ const ANIMATIONS = `
 
 export default function CheckoutCanceled(): React.ReactElement {
   return (
-    <Layout title="Purchase Canceled — Yopass" noFooter>
+    <Layout title="Purchase Canceled" description="Your purchase was canceled. No charges were made." noFooter>
       <Head>
-        <meta name="description" content="Your purchase was canceled. No charges were made." />
         <meta name="robots" content="noindex" />
         <style>{ANIMATIONS}</style>
       </Head>

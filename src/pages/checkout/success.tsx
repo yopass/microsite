@@ -27,9 +27,8 @@ const ANIMATIONS = `
 
 export default function CheckoutSuccess(): React.ReactElement {
   return (
-    <Layout title="License Purchased — Yopass" noFooter>
+    <Layout title="License Purchased" description="Your Yopass Business License is on its way." noFooter>
       <Head>
-        <meta name="description" content="Your Yopass Business License is on its way." />
         <meta name="robots" content="noindex" />
         <style>{ANIMATIONS}</style>
       </Head>

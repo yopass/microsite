@@ -4,9 +4,8 @@ import Head from '@docusaurus/Head';
 
 export default function TermsOfService(): React.ReactElement {
   return (
-    <Layout title="Terms of Service — Yopass" noFooter>
+    <Layout title="Terms of Service" description="Terms for the Yopass Business License, including permitted use, annual subscriptions, support, cancellation, and responsibilities for self-hosted software." noFooter>
       <Head>
-        <meta name="description" content="Terms of Service for Yopass Business License." />
         <meta name="robots" content="noindex, follow" />
       </Head>
 

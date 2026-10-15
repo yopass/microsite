@@ -9,19 +9,8 @@ export default function Home(): React.ReactElement {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   return (
-    <Layout title="Share Secrets Securely | End-to-End Encrypted Secret Sharing" noFooter>
+    <Layout title="End-to-End Encrypted Secret Sharing" description="Share passwords, API keys, and files securely with Yopass. Open-source, end-to-end encrypted secret sharing with one-time links. Free to self-host." noFooter>
       <Head>
-        <meta name="description" content="Stop sharing passwords in Slack and email. Yopass encrypts secrets in your browser and generates one-time links that auto-expire. Open source, no accounts needed." />
-        <meta property="og:title" content="Yopass — Share Secrets Securely" />
-        <meta property="og:description" content="Stop sharing passwords in Slack and email. Yopass encrypts secrets in your browser and generates one-time links that auto-expire." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yopass.se/" />
-        <meta property="og:image" content="https://yopass.se/og-image.png" />
-        <meta property="og:site_name" content="Yopass" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Yopass — Share Secrets Securely" />
-        <meta name="twitter:description" content="Stop sharing passwords in Slack and email. Yopass encrypts secrets in your browser and generates one-time links that auto-expire." />
-        <meta name="twitter:image" content="https://yopass.se/og-image.png" />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'SoftwareApplication',
@@ -42,6 +31,7 @@ export default function Home(): React.ReactElement {
         })}</script>
       </Head>
 
+      <main>
       {/* ── HERO ── */}
       <section className="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 mesh-bg" />
@@ -321,6 +311,8 @@ export default function Home(): React.ReactElement {
           </div>
         </div>
       </section>
+
+      </main>
 
       {/* ── FOOTER ── */}
       <footer className="py-14 border-t border-gray-100 bg-white/80 backdrop-blur-sm">

@@ -1,14 +1,9 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import Head from '@docusaurus/Head';
 
 export default function Privacy(): React.ReactElement {
   return (
-    <Layout title="Privacy Policy — Yopass" noFooter>
-      <Head>
-        <meta name="description" content="Privacy policy for Yopass business license purchases." />
-        <link rel="canonical" href="https://yopass.se/privacy" />
-      </Head>
+    <Layout title="Privacy Policy" description="How Yopass AB handles personal data for business license purchases, billing, and support. Learn about data use, retention, cookies, and your rights." noFooter>
 
       <div className="mesh-bg min-h-screen bg-[#fafbfc]">
         <main className="px-6 py-10 pb-24">
