@@ -76,6 +76,10 @@ const config: Config = {
     async function tailwindPlugin() {
       return {
         name: "docusaurus-tailwindcss",
+        // the landing page body is plain HTML (src/pages/_home/body.html), imported as a string
+        configureWebpack() {
+          return { module: { rules: [{ test: /_home\/.*\.html$/, type: "asset/source" }] } };
+        },
         configurePostCss(postcssOptions: { plugins: unknown[] }) {
           postcssOptions.plugins.push(require("@tailwindcss/postcss"));
           postcssOptions.plugins.push(require("autoprefixer"));
@@ -107,6 +111,7 @@ const config: Config = {
           to: "/docs/intro",
           label: "Docs",
           position: "left",
+          activeBasePath: "docs",
         },
         {
           href: "https://github.com/jhaals/yopass",
@@ -121,7 +126,7 @@ const config: Config = {
         {
           type: "html",
           position: "right",
-          value: '<a href="/#pricing" class="navbar-cta">Get Started</a>',
+          value: '<a href="/#pricing" class="navbar-cta">Get a license</a>',
         },
       ],
     },
@@ -151,7 +156,7 @@ const config: Config = {
       { name: "twitter:card", content: "summary" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Yopass" },
-      { name: "theme-color", content: "#fafbfc" },
+      { name: "theme-color", content: "#ffffff" },
       { name: "color-scheme", content: "light" },
     ],
   } satisfies Preset.ThemeConfig,
