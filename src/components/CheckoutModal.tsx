@@ -120,7 +120,7 @@ export default function CheckoutModal({ isOpen, onClose }: Props): React.ReactEl
   if (!isOpen) return null;
 
   const inputClass =
-    'w-full rounded-lg border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue transition-colors';
+    'w-full rounded-lg border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-2 focus:outline-brand-blue/40 focus:border-brand-blue transition-colors';
 
   return (
     <div
