@@ -5,7 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "docs:fetch": "sh scripts/fetch-docs.sh",
-    "prestart": "npm run docs:fetch",
+    "docs:generate": "docusaurus clean-api-docs all && docusaurus gen-api-docs all",
+    "prestart": "npm run docs:fetch && npm run docs:generate",
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
@@ -15,16 +16,20 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc --noEmit",
-    "prebuild": "npm run docs:fetch"
+    "prebuild": "npm run docs:fetch && npm run docs:generate"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/plugin-client-redirects": "^3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
     "clsx": "^2.0.0",
+    "docusaurus-plugin-openapi-docs": "^5.2.0",
+    "docusaurus-plugin-sass": "^0.2.7",
+    "docusaurus-theme-openapi-docs": "^5.2.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.2.7",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "sass": "^1.108.2"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.2",

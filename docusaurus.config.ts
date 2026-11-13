@@ -48,6 +48,27 @@ const config: Config = {
           path: path.resolve(__dirname, ".yopass-docs/docs"),
           routeBasePath: "docs",
           sidebarPath: "./sidebars.ts",
+          // Renders the generated API reference pages.
+          docItemComponent: "@theme/ApiItem",
+          // Swap the flat, generated api-reference folder for the plugin's
+          // sidebar, which groups endpoints by tag.
+          async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+            const items = await defaultSidebarItemsGenerator(args);
+            const generated = require("./.yopass-docs/docs/api-reference/sidebar");
+            const apisidebar: any[] = generated.default;
+            // The plugin writes ids relative to the repo root; docs ids start below docs/.
+            const relative = (item: any): any => ({
+              ...item,
+              ...(item.id && { id: item.id.replace(/^docs\//, "") }),
+              ...(item.link?.id && { link: { ...item.link, id: item.link.id.replace(/^docs\//, "") } }),
+              ...(item.items && { items: item.items.map(relative) }),
+            });
+            return items.map((item) =>
+              item.type === "category" && item.label === "api-reference"
+                ? { type: "category", label: "API reference", collapsed: true, items: apisidebar.map(relative) }
+                : item,
+            );
+          },
         },
         blog: false,
         theme: {
@@ -61,7 +82,27 @@ const config: Config = {
     ],
   ],
 
+  themes: ["docusaurus-theme-openapi-docs"],
+
   plugins: [
+    "docusaurus-plugin-sass",
+    [
+      // Per-endpoint pages from the spec in the fetched yopass docs. The output
+      // is generated at build time (`npm run docs:generate`) and not committed.
+      "docusaurus-plugin-openapi-docs",
+      {
+        id: "api",
+        docsPluginId: "classic",
+        config: {
+          yopass: {
+            specPath: ".yopass-docs/docs/openapi.yaml",
+            outputDir: ".yopass-docs/docs/api-reference",
+            sidebarOptions: { groupPathsBy: "tag", categoryLinkSource: "tag" },
+            hideSendButton: true,
+          },
+        },
+      },
+    ],
     [
       "@docusaurus/plugin-client-redirects",
       {
