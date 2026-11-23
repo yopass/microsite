@@ -153,6 +153,7 @@ code, pre { background: none; border: 0; border-radius: 0; padding: 0; margin: 0
 
 /* #license: one panel height for the card group; the audit log's lines */
 #license .panel { --p-h: 336px; }
+#license .section-head > .t-label { color: var(--muted); font-size: var(--t-label); line-height: 1.4; }   /* eyebrow, over .section-head p */
 @media (max-width: 639px) { #hosting .ui-code__pre { font-size: 12px; } }   /* the FORCE_ONETIME_SECRETS line fits the phone frame */
 @media (min-width: 640px) and (max-width: 1023px) { #license .panel { --p-h: 280px; } }
 @media (min-width: 1024px) and (max-width: 1279px) { #license .panel { --p-h: 256px; } }
@@ -204,7 +205,7 @@ code, pre { background: none; border: 0; border-radius: 0; padding: 0; margin: 0
       </div>
       <div class="nav__item"><a class="nav__link" href="#encryption">Encryption</a></div>
       <div class="nav__item"><a class="nav__link" href="#requests">Requests</a></div>
-      <div class="nav__item"><a class="nav__link" href="#license">License</a></div>
+      <div class="nav__item"><a class="nav__link" href="#license">Audit</a></div>
       <div class="nav__item"><a class="nav__link" href="#pricing">Pricing</a></div>
       <div class="nav__item"><a class="nav__link" href="/docs/intro">Docs</a></div>
     </nav>
@@ -383,6 +384,7 @@ code, pre { background: none; border: 0; border-radius: 0; padding: 0; margin: 0
     <div class="wrap">
       <div class="group">
         <div class="section-head">
+          <p class="t-label">Included with a business license</p>
           <h2 id="license-h">A record of every secret. <span class="muted">Who opened it, who signed in, and when.</span></h2>
         </div>
         <div class="grid">
@@ -549,6 +551,7 @@ code, pre { background: none; border: 0; border-radius: 0; padding: 0; margin: 0
           <div class="faq__item"><h3>Does the recipient need a Yopass account?</h3><p>No. They open the link in a browser.</p></div>
           <div class="faq__item"><h3>Is there a hosted Yopass?</h3><p>No. You run it on your own servers. The public demo is for trying it.</p></div>
           <div class="faq__item only-wide"><h3>What does a license add to Yopass?</h3><p>Secret requests, read receipts, webhooks, audit logging, OpenID Connect sign-in, theming and larger uploads.</p></div>
+          <div class="faq__item"><h3>Is there a limit to how many users in my organization can use Yopass?</h3><p>No. There is no user limit.</p></div>
         </div>
       </div>
     </div>
@@ -571,7 +574,7 @@ code, pre { background: none; border: 0; border-radius: 0; padding: 0; margin: 0
           <p class="footer__lede">Encrypted secret sharing you host yourself.</p>
         </div>
         <div class="span-2 footer__col"><h3>Product</h3><ul><li><a href="#product">One-time links</a></li><li><a href="#encryption">Encryption</a></li><li><a href="#hosting">Self-hosting</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>License</h3><ul><li><a href="#requests">Secret requests</a></li><li><a href="#license">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#questions">Questions</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>License</h3><ul><li><a href="#requests">Secret requests</a></li><li><a href="#license">Audit</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#questions">Questions</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Docs</h3><ul><li><a href="/docs/quickstart">Quick start</a></li><li><a href="/docs/server-options">Server options</a></li><li><a href="/docs/cli">Command line</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Project</h3><ul><li><a href="https://github.com/jhaals/yopass">GitHub</a></li><li><a href="https://share.yopass.se">Demo</a></li><li><a href="mailto:johan@yopass.se">Contact</a></li></ul></div>
       </div>
