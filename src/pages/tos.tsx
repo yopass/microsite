@@ -56,7 +56,7 @@ export default function TermsOfService(): React.ReactElement {
 
             <section>
               <h2 className="text-xl font-bold mb-3">6. Subscription and Payment</h2>
-              <p className="text-gray-600 leading-relaxed">The Business License is billed annually at €149/year, unless another price is agreed in your order. The price, currency, billing period, and applicable taxes are shown at checkout before payment. Subscriptions renew automatically for another year unless cancelled before the renewal date. Prices exclude VAT; applicable VAT is added at checkout. Reverse-charge treatment applies only where its legal requirements are met. Payments are processed by Stripe on our behalf; Yopass AB is your supplier and contractual counterparty. We do not receive or store your full payment card details. Suspension for non-payment is governed by Section 14.</p>
+              <p className="text-gray-600 leading-relaxed">The Business License is billed annually at €349/year, unless another price is agreed in your order. The price, currency, billing period, and applicable taxes are shown at checkout before payment. Subscriptions renew automatically for another year unless cancelled before the renewal date. Prices exclude VAT; applicable VAT is added at checkout. Reverse-charge treatment applies only where its legal requirements are met. Payments are processed by Stripe on our behalf; Yopass AB is your supplier and contractual counterparty. We do not receive or store your full payment card details. Suspension for non-payment is governed by Section 14.</p>
             </section>
 
             <section>

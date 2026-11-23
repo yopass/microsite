@@ -6,7 +6,7 @@ import CheckoutModal from '../components/CheckoutModal';
 import body from './_home/body.html';
 
 const TITLE = 'Yopass: encrypted secret sharing you host yourself';
-const DESCRIPTION = 'Share passwords, API keys and files through one-time links that are encrypted in the browser. Open source and self-hosted, with a business license for €149 a year.';
+const DESCRIPTION = 'Share passwords, API keys and files through one-time links that are encrypted in the browser. Open source and self-hosted, with a business license for €349 a year.';
 
 // Docusaurus re-renders the page on every location change, a #pricing click included, and React then
 // writes the HTML in again: the kit's scripts stay bound to the old nodes and the sections go blank.
@@ -77,7 +77,7 @@ export default function Home(): React.ReactElement {
           author: { '@type': 'Person', name: 'Johan Haals', url: 'https://github.com/jhaals' },
           offers: [
             { '@type': 'Offer', name: 'Open Source', price: '0', priceCurrency: 'USD', description: 'Free forever. Self-hosted, end-to-end encryption, one-time secret links.' },
-            { '@type': 'Offer', name: 'Business License', price: '149', priceCurrency: 'EUR', description: 'Secret requests, read receipts, webhooks, custom branding, higher upload limits. Billed annually.' },
+            { '@type': 'Offer', name: 'Business License', price: '349', priceCurrency: 'EUR', description: 'Secret requests, read receipts, webhooks, custom branding, higher upload limits. Billed annually.' },
           ],
           featureList: ['End-to-end encryption', 'Self-destructing links', 'One-time downloads', 'No account required', 'Open source', 'Docker and Kubernetes support'],
           isAccessibleForFree: true,

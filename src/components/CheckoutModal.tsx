@@ -147,7 +147,7 @@ export default function CheckoutModal({ isOpen, onClose }: Props): React.ReactEl
         <div className="px-7 pt-7 pb-6 border-b border-black/10">
           <h2 id="checkout-title" className="text-xl font-medium m-0 mb-3">Business License</h2>
           <p className="m-0 flex items-baseline gap-1.5">
-            <span className="text-3xl font-semibold tracking-tight">€149</span>
+            <span className="text-3xl font-semibold tracking-tight">€349</span>
             <span className="text-sm text-[#6b6b6b]">/ year, excl. VAT</span>
           </p>
           <p className="m-0 mt-1 text-sm text-[#6b6b6b]">Renews annually until cancelled.</p>
