@@ -119,8 +119,10 @@ export default function CheckoutModal({ isOpen, onClose }: Props): React.ReactEl
 
   if (!isOpen) return null;
 
+  // font-[inherit] and appearance-none: no preflight here, so form controls would otherwise keep the browser's font and chrome
   const inputClass =
-    'w-full rounded-lg border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-2 focus:outline-brand-blue/40 focus:border-brand-blue transition-colors';
+    'block w-full h-11 rounded border border-black/15 bg-white px-3 text-[15px] font-[inherit] appearance-none transition-colors hover:border-black/30 focus:outline-none focus:border-[#1a4be0] focus:ring-3 focus:ring-[#1a4be0]/15';
+  const labelClass = 'block text-sm font-medium text-[#111] mb-1.5';
 
   return (
     <div
@@ -129,95 +131,119 @@ export default function CheckoutModal({ isOpen, onClose }: Props): React.ReactEl
       aria-modal="true"
       aria-labelledby="checkout-title"
     >
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto p-8 z-10">
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" onClick={onClose} />
+      <div className="relative z-10 w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-md bg-white text-[#111] shadow-2xl">
         <button
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-colors"
+          type="button"
+          className="absolute top-3 right-3 flex h-9 w-9 cursor-pointer items-center justify-center rounded border-0 bg-transparent p-0 text-[#6b6b6b] transition-colors hover:bg-black/5 hover:text-[#111]"
           aria-label="Close"
           onClick={onClose}
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
-        <h2 id="checkout-title" className="text-xl font-bold mb-1">Get Business License</h2>
-        <p className="text-sm text-gray-500 mb-6">€149 / year excluding VAT · Renews annually until cancelled. Sold by Yopass AB. Available to companies in the countries listed below. If your country is missing from the list, <a href="mailto:johan@yopass.se" className="text-brand-teal hover:underline">contact us</a>. Subscription handled by Stripe</p>
+        <div className="px-7 pt-7 pb-6 border-b border-black/10">
+          <h2 id="checkout-title" className="text-xl font-medium m-0 mb-3">Business License</h2>
+          <p className="m-0 flex items-baseline gap-1.5">
+            <span className="text-3xl font-semibold tracking-tight">€149</span>
+            <span className="text-sm text-[#6b6b6b]">/ year, excl. VAT</span>
+          </p>
+          <p className="m-0 mt-1 text-sm text-[#6b6b6b]">Renews annually until cancelled.</p>
+        </div>
 
-        <form noValidate className="space-y-4" onSubmit={handleSubmit}>
+        <form noValidate className="px-7 pt-6 pb-7 space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="co-company" className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+            <label htmlFor="co-company" className={labelClass}>Company name</label>
             <input
               id="co-company" type="text" required autoComplete="organization"
               value={company} onChange={e => setCompany(e.target.value)}
-              className={inputClass}
+              className={`${inputClass} text-[#111]`}
             />
           </div>
 
           <div>
-            <label htmlFor="co-email" className="block text-sm font-medium text-gray-700 mb-1">Work Email</label>
+            <label htmlFor="co-email" className={labelClass}>Work email</label>
             <input
               id="co-email" type="email" required autoComplete="email"
               value={email} onChange={e => setEmail(e.target.value)}
-              className={inputClass}
+              className={`${inputClass} text-[#111]`}
             />
           </div>
 
           <div>
-            <label htmlFor="co-country" className="block text-sm font-medium text-gray-700 mb-1">Country</label>
-            <select
-              id="co-country" required
-              value={country}
-              onChange={e => { setCountry(e.target.value); setVat(''); setError(''); }}
-              className={`${inputClass} bg-white`}
-            >
-              <option value="">Select country…</option>
-              {COUNTRIES.map(c => (
-                <option key={c.code} value={c.code}>{c.label}</option>
-              ))}
-            </select>
+            <label htmlFor="co-country" className={labelClass}>Country</label>
+            <div className="relative">
+              <select
+                id="co-country" required
+                value={country}
+                onChange={e => { setCountry(e.target.value); setVat(''); setError(''); }}
+                className={`${inputClass} pr-9 cursor-pointer ${country ? 'text-[#111]' : 'text-[#6b6b6b]'}`}
+              >
+                <option value="">Select country…</option>
+                {COUNTRIES.map(c => (
+                  <option key={c.code} value={c.code} className="text-[#111]">{c.label}</option>
+                ))}
+              </select>
+              <svg className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b6b6b]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+            <p className="m-0 mt-1.5 text-xs text-[#6b6b6b]">
+              For companies in the listed countries. Country missing? <a href="mailto:johan@yopass.se" className="text-[#1a4be0] underline underline-offset-2">Contact us</a>.
+            </p>
           </div>
 
           {showVat && (
             <div>
-              <label htmlFor="co-vat" className="block text-sm font-medium text-gray-700 mb-1">{vatLabel}</label>
+              <label htmlFor="co-vat" className={labelClass}>{vatLabel}</label>
               <input
                 id="co-vat" type="text" autoComplete="off" placeholder={country === 'CH' ? 'e.g. CHE-123.456.789' : country === 'CA' ? 'e.g. 123456782RT0001' : country === 'NO' ? 'e.g. 974760673MVA' : country === 'AU' ? 'e.g. 51 824 753 556' : 'e.g. DE811257892'}
                 value={vat} onChange={e => setVat(e.target.value)}
-                className={`${inputClass} font-mono`}
+                className={`${inputClass} text-[#111] font-mono placeholder:text-[#767676]`}
               />
-              <p className="text-xs text-gray-400 mt-1.5">{country === 'CA' ? 'Required for Canadian companies. Enter your GST/HST Business Number.' : country === 'NO' ? 'Required for Norwegian companies. Enter your MVA organisation number.' : country === 'AU' ? 'Required for Australian companies. Enter your 11-digit ABN.' : 'Required for EU, UK, and Swiss companies. Used for B2B reverse-charge VAT.'}</p>
+              <p className="m-0 mt-1.5 text-xs text-[#6b6b6b]">{country === 'CA' ? 'Required for Canadian companies. Enter your GST/HST Business Number.' : country === 'NO' ? 'Required for Norwegian companies. Enter your MVA organisation number.' : country === 'AU' ? 'Required for Australian companies. Enter your 11-digit ABN.' : 'Required for EU, UK, and Swiss companies. Used for B2B reverse-charge VAT.'}</p>
             </div>
           )}
 
-          <label className="flex items-start gap-3 text-sm text-gray-600">
+          <label className="flex items-start gap-2.5 pt-1 text-sm text-[#444] cursor-pointer">
             <input
               type="checkbox"
               checked={acceptedTerms}
               onChange={e => setAcceptedTerms(e.target.checked)}
-              className="mt-1"
+              className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#1a4be0]"
             />
             <span>
               I accept the{' '}
-              <a href="/tos" target="_blank" rel="noopener noreferrer" className="text-brand-teal underline">Terms of Service</a>
-              {' '}and <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-teal underline">Privacy Policy</a>.
+              <a href="/tos" target="_blank" rel="noopener noreferrer" className="text-[#111] underline underline-offset-2">Terms of Service</a>
+              {' '}and <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-[#111] underline underline-offset-2">Privacy Policy</a>.
             </span>
           </label>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p role="alert" className="m-0 rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3.5 rounded-full gradient-brand text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-brand-blue/20 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="button--primary w-full cursor-pointer text-base! disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {submitLabel}
           </button>
+
+          <p className="m-0 flex items-center justify-center gap-1.5 text-xs text-[#6b6b6b]">
+            <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="11" width="14" height="10" rx="2" strokeWidth={2} />
+              <path d="M8 11V7a4 4 0 018 0v4" strokeWidth={2} strokeLinecap="round" />
+            </svg>
+            Subscription handled by Stripe · Sold by Yopass AB
+          </p>
         </form>
 
-        <p className="text-xs text-gray-400 mt-4 text-center">
-          If you need help with your purchase or need an invoice before purchasing, email{' '}
-          <a href="mailto:johan@yopass.se" className="underline hover:text-gray-600 transition-colors">johan@yopass.se</a>.
+        <p className="m-0 px-7 py-4 bg-black/[0.03] border-t border-black/10 text-xs text-[#6b6b6b] text-center">
+          Need an invoice before purchasing, or have questions? Email{' '}
+          <a href="mailto:johan@yopass.se" className="text-[#111] underline underline-offset-2">johan@yopass.se</a>{' '}
+          and we'll sort it out.
         </p>
       </div>
     </div>
